@@ -5,5 +5,15 @@
 # Otherwise repeat the process
 # The numbers resulting are happy, the others are sad
 
+
+def sum_squares(number):
+    return sum(int(char) ** 2 for char in str(number))
+
+
 def play (number):
-    return None
+    already_tested = []
+    while number != 1 and number not in already_tested:
+        already_tested.append(number)
+        number = sum_squares(number)
+
+    return number == 1

@@ -1,5 +1,5 @@
 class Entity:
-    url = {'protcol':'',\
+    url = {'protocol':'',\
         'host':'',\
         'domain':'',\
         'path':'',\

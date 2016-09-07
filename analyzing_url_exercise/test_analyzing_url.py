@@ -6,16 +6,16 @@ from analyzing_url_exercise.models import Entity
 class Test(TestCase):
 
     def entity_factory(self, protocol = '', host = '', domain = '', path = '', parameters = '',user = '', password = ''):
-        entity = Entity()
-        entity.url['protocol'] = protocol
-        entity.url['host'] = host
-        entity.url['domain'] = domain
-        entity.url['path'] = path
-        entity.url['parameters'] = parameters
-        entity.url['user'] = user
-        entity.url['password'] = password
+        mock = Entity()
+        mock.url['protocol'] = protocol
+        mock.url['host'] = host
+        mock.url['domain'] = domain
+        mock.url['path'] = path
+        mock.url['parameters'] = parameters
+        mock.url['user'] = user
+        mock.url['password'] = password
 
-        return entity.url
+        return mock.url
 
     def test_gmail(self):
         url = self.entity_factory(protocol='http', host='www', domain='google.com', path='mail', parameters='user=foo')
@@ -25,6 +25,6 @@ class Test(TestCase):
         url = self.entity_factory(protocol='ssh', user='foo', password='pwd.123', domain='git.com')
         self.assertDictEqual(analyze('ssh://foo%senha@git.com/'), url)
 
-    def invalid_url(self):
+    def test_invalid_url(self):
         self.assertRaises(Exception(),"invalid url")
 

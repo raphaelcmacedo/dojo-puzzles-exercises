@@ -6,5 +6,15 @@
 # when the number can be divided by 3 and 5 it says: fizzbuzz
 # otherwise it says the number
 
+
 def play(number):
-    return None
+    if number % 3 and number % 5:
+        return str(number)
+
+    result = ''
+    if not number % 3:
+        result += 'fizz'
+    if not number % 5:
+        result += 'buzz'
+
+    return result
